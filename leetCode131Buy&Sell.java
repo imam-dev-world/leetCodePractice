@@ -11,7 +11,7 @@ class Solution2 {
             }
 
             // check the maxProfit from selling the stock
-            if(maxProfit<prices[i] && prices[i] - cheapest>maxProfit){
+            if(prices[i] - cheapest>maxProfit){
                 maxProfit = prices[i] - cheapest ;
             }
         }
