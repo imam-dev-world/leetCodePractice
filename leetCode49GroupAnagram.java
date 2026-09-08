@@ -32,7 +32,7 @@ class LeetCode49 {
 
 class GroupAnagram {
     public static void main(String[] args) {
-        String[] str = { "a" };
+        String[] str = { "eat","tea","tan","ate","nat","bat" };
         LeetCode49 l = new LeetCode49();
         List<List<String>> lists = l.groupAnagrams(str);
         for (List<String> list : lists) {
