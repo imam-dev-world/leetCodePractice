@@ -5,24 +5,33 @@ import java.util.PriorityQueue;
 class LeetCode347 {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer,Integer> map = new HashMap<>();
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        PriorityQueue<Map.Entry<Integer, Integer>> minHeap =
+                new PriorityQueue<>(
+                        (a, b) -> a.getValue() - b.getValue()
+                );
+
         int[] result = new int[k];
+
         for (int i = 0; i < nums.length; i++) {
+
             map.put(nums[i], map.getOrDefault(nums[i], 0)+1);
+            
         }
-        int count=0;
+        
         for (Map.Entry<Integer,Integer> entry: map.entrySet()) {
-            // if(minHeap.size()>k){
-            //     minHeap.poll();
-            // }
-            // else{
-                // }
-                    minHeap.add(entry.getValue());
-            }
+
+            minHeap.add(entry);
+
             if(minHeap.size()>k){
                 minHeap.poll();
             }
-        System.out.println(minHeap);
+        }
+
+        for (int i = 0; i < k; i++) {
+            result[i] = minHeap.poll().getKey();
+        }
+
         return result;
     }
 }
